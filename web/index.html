@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Predict ISS, Tiangong and other satellite passes with a browser-only orbital calculator from CoolCode.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Satellite Pass | CoolCode.ca</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="mast"><div class="wrap mast-inner"><a class="brand" href="https://coolcode.ca/"><b aria-hidden="true">&gt;_</b> CoolCode<span>.ca</span></a><a href="https://github.com/jsdyer/satpasses">Source ↗</a></div></header>
+<main>
+<section class="hero"><div class="wrap hero-wrap">
+<div><p class="eyebrow">Orbital observation</p><h1>Satellite <em>Pass</em></h1><p>Find out when the ISS and other satellites cross your sky, where to look, and which passes may be visible after dark.</p></div>
+<div class="orbital" aria-hidden="true"><i></i><i></i><i></i><span></span></div>
+</div></section>
+<div class="wrap layout">
+<form class="panel" id="planner">
+<h2>Plan a pass</h2>
+<label for="place">Observer preset</label>
+<select id="place">
+<option value="vancouver">Vancouver, BC</option>
+<option value="langley">Langley, BC</option>
+<option value="victoria">Victoria, BC</option>
+<option value="halifax">Halifax, NS</option>
+<option value="sydney">Sydney, NS</option>
+<option value="custom">Custom coordinates</option>
+</select>
+<div class="fields">
+<div><label for="lat">Latitude (°)</label><input id="lat" type="number" step="any" min="-90" max="90" value="49.2827" required></div>
+<div><label for="lon">Longitude (°)</label><input id="lon" type="number" step="any" min="-180" max="180" value="-123.1207" required></div>
+<div><label for="altitude">Altitude (m)</label><input id="altitude" type="number" step="1" min="-400" max="9000" value="0" required></div>
+<div><label for="min">Minimum elevation</label><select id="min"><option value="5">5°</option><option value="10" selected>10°</option><option value="20">20°</option><option value="30">30°</option><option value="45">45°</option></select></div>
+</div>
+<label for="satellite">Satellite</label><select id="satellite" disabled><option>Loading orbital data…</option></select>
+<div class="fields">
+<div><label for="window">Look ahead</label><select id="window"><option value="1">24 hours</option><option value="3" selected>3 days</option><option value="5">5 days</option></select></div>
+<div><label for="zone">Display times</label><select id="zone"><option value="preset">Preset time zone</option><option value="browser">Browser time zone</option><option value="utc">UTC</option></select></div>
+</div>
+<button type="submit" id="calculate" disabled>Calculate passes →</button>
+<p class="fine">Coordinates are used in this browser only.</p>
+</form>
+<section class="work" aria-labelledby="result-title">
+<div class="results-head"><div><p class="eyebrow" id="target-summary">Observing forecast</p><h2 id="result-title">Upcoming passes</h2></div><button id="download" type="button" class="quiet" disabled>Export CSV</button></div>
+<div id="status" class="status" role="status" aria-live="polite">Loading orbital data…</div>
+<div class="tools" id="filters" hidden><label class="toggle"><input id="visible-only" type="checkbox"> Likely visible only</label><p id="timezone-label" class="fine"></p></div>
+<div id="passes" class="passes"></div>
+<details class="panel methodology"><summary>How these predictions work</summary><p>SGP4 projects each orbit from a dated set of CelesTrak elements. A pass is the time the satellite clears your selected elevation. A likely visible window requires sunlight on the satellite and the Sun at least 6° below your horizon. Clouds, nearby obstructions, equipment and satellite brightness can affect sighting.</p><p>Pass start and end times are estimated to within a second by the threshold calculation. Illumination windows and peak elevations use 5-second samples. Real orbital error can be larger, especially after an orbit change or with old data.</p><p><a href="https://celestrak.org/NORAD/documentation/gp-data-formats.php">CelesTrak GP format</a> · <a href="https://celestrak.org/usage-policy.php">Retrieval policy</a> · <a href="./vendor/SATELLITE-LICENSE.md">Satellite.js licence</a></p></details>
+</section>
+</div>
+</main>
+<footer class="wrap foot"><p id="data-age">Orbital data from CelesTrak</p><p><a href="https://celestrak.org/NORAD/elements/">CelesTrak orbital elements ↗</a> · <a href="https://coolcode.ca/nightfinder/">Plan an astronomy session ↗</a></p></footer>
+<noscript>Enable JavaScript to calculate satellite passes.</noscript>
+<script type="module" src="./app.mjs"></script>
+</body>
+</html>
