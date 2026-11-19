@@ -4,9 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Predict ISS, Tiangong and other satellite passes with a browser-only orbital calculator from CoolCode.">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'self'">
 <title>Satellite Pass | CoolCode.ca</title>
 <link rel="stylesheet" href="./style.css">
+<script defer src="/assets/tool-metrics.js" referrerpolicy="no-referrer"></script>
 </head>
 <body>
 <header class="mast"><div class="wrap mast-inner"><a class="brand" href="https://coolcode.ca/"><b aria-hidden="true">&gt;_</b> CoolCode<span>.ca</span></a><a href="https://github.com/jsdyer/satpasses">Source ↗</a></div></header>
@@ -50,7 +51,7 @@
 </section>
 </div>
 </main>
-<footer class="wrap foot"><p id="data-age">Orbital data from CelesTrak</p><p><a href="https://celestrak.org/NORAD/elements/">CelesTrak orbital elements ↗</a> · <a href="https://coolcode.ca/nightfinder/">Plan an astronomy session ↗</a></p></footer>
+<footer class="wrap foot"><p id="data-age">Orbital data from CelesTrak</p><p><a href="https://celestrak.org/NORAD/elements/">CelesTrak orbital elements ↗</a> · <a href="https://coolcode.ca/nightfinder/">Plan an astronomy session ↗</a></p> <a href="https://coolcode.ca/report/?tool=satpasses" referrerpolicy="no-referrer">Report an issue</a></footer>
 <noscript>Enable JavaScript to calculate satellite passes.</noscript>
 <script type="module" src="./app.mjs"></script>
 </body>
