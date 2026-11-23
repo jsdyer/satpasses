@@ -15,3 +15,13 @@ Use `--elements /path/to/visual.json` to build from a previously downloaded Cele
 CelesTrak [GP OMM data](https://celestrak.org/NORAD/documentation/gp-data-formats.php) is downloaded during builds from the Visual group. The build reuses data <2 hours old and keeps an older validated local cache if CelesTrak is temporarily unavailable. Follow the [CelesTrak usage policy](https://celestrak.org/usage-policy.php) when scheduling builds. Object labels and selection are supplied by CoolCode. The site includes [Satellite.js](https://github.com/shashwatak/satellite-js) under MIT.
 
 The calculator projects the orbit with SGP4 and evaluates look angles from the selected location. A geometric pass clears the chosen elevation. A likely visible sample requires sunlight on the satellite and the Sun at least six degrees below the observer’s horizon. The illumination model uses the Earth’s approximate umbra and skips penumbra and atmospheric effects. Weather, obstructions and object brightness may prevent sighting. Read the dated orbit epoch as well as the snapshot retrieval date, especially after maneuvers.
+
+
+<!-- coolcode:guide -->
+Calculate passes for your location and chosen minimum elevation, filter to likely visible windows, and download the shown passes as CSV or an ICS calendar. The calendar is a dated export, not a live subscription; refresh orbital elements and recalculate before observing.
+<!-- /coolcode:guide -->
+
+
+## Added browser workflow
+
+Calculate passes for your location and chosen minimum elevation, filter to likely visible windows, and download the shown passes as CSV or an ICS calendar. The calendar is a dated export, not a live subscription; refresh orbital elements and recalculate before observing.

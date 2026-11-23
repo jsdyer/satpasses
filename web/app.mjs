@@ -1,4 +1,5 @@
 import { direction, observerAt, predict } from './orbits.mjs';
+import {passCalendar} from './calendar.mjs';
 
 const el = id => document.getElementById(id);
 const presets = {
@@ -98,6 +99,7 @@ function renderPasses() {
   output.replaceChildren();
   const view = shownPasses();
   el('download').disabled = view.length === 0;
+  el('download-calendar').disabled = view.length === 0;
   if (!view.length) {
     output.append(make('p', el('visible-only').checked && results.length
       ? 'No likely visible passes. Uncheck the filter to see every pass.'
@@ -186,6 +188,10 @@ el('planner').addEventListener('submit', event => {
 });
 el('visible-only').addEventListener('change', renderPasses);
 el('download').addEventListener('click', exportPasses);
+el('download-calendar').addEventListener('click',()=>{
+  const href=URL.createObjectURL(new Blob([passCalendar(shownPasses(),config)],{type:'text/calendar;charset=utf-8'}));
+  Object.assign(make('a'),{href,download:'satellite-passes.ics'}).click();setTimeout(()=>URL.revokeObjectURL(href),1000);
+});
 for (const id of ['satellite', 'min', 'window', 'zone']) el(id).addEventListener('change', calculate);
 
 try {
