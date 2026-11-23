@@ -1,0 +1,24 @@
+{
+  "id": "satpasses",
+  "title": "Satellite Pass",
+  "description": "Calculate passes for the ISS and other satellites from your location.",
+  "category": "field-kit",
+  "tags": [
+    "iss",
+    "tiangong",
+    "astronomy",
+    "orbit",
+    "celestrak",
+    "nasa"
+  ],
+  "icon": "satellite",
+  "url": "/satpasses/",
+  "source": "https://github.com/jsdyer/satpasses",
+  "hosting": "project",
+  "access": "browser",
+  "data_info": {
+    "mode": "snapshot",
+    "detail": "Your browser uses orbital elements from CelesTrak to calculate satellite passes for your location.",
+    "cadence": "Every 4 hours"
+  }
+}
