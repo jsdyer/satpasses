@@ -25,3 +25,11 @@ Calculate passes for your location and chosen minimum elevation, filter to likel
 ## Added browser workflow
 
 Calculate passes for your location and chosen minimum elevation, filter to likely visible windows, and download the shown passes as CSV or an ICS calendar. The calendar is a dated export, not a live subscription; refresh orbital elements and recalculate before observing.
+
+<!-- schedule-reliability -->
+## Schedule reliability
+
+Public GitHub repositories can have scheduled workflows disabled after 60 days of inactivity. A separate weekly [schedule guard](.github/workflows/schedule-guard.yml) calls GitHub's enable-workflow API for an explicit list of refresh workflows and itself. It can restore workflows disabled for inactivity, preserves manually disabled workflows, and runs independently of collection failures.
+
+This is an interim mitigation, not a scheduling guarantee: GitHub does not document active-workflow renewal as a permanent exemption, and scheduled runs can be delayed or dropped. A scheduler on our own Linux server is the planned independent trigger. The guard does not collect data, create dummy commits, or change source/check timestamps; successful collection and published data freshness still need monitoring.
+<!-- /schedule-reliability -->
